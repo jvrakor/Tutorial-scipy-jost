@@ -1,16 +1,17 @@
 """Test the `met` module."""
 
-from hugs.calc import get_wind_dir, get_wind_speed, get_wind_components
+from hugs.calc import get_wind_components, get_wind_dir, get_wind_speed
 
-import pytest
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
+
+import pytest
 
 
 def test_speed():
     """Test calculating wind speed."""
-    u = np.array([4., 2.,0., 0.])
-    v = np.array([0.,2., 4., 0.])
+    u = np.array([4., 2., 0., 0.])
+    v = np.array([0., 2., 4., 0.])
 
     speed = get_wind_speed(u, v)
 
@@ -61,6 +62,6 @@ def test_wind_comps_scalar():
 
 
 def test_warning_direction():
-    "Test the warning."
+    """Test the warning."""
     with pytest.warns(UserWarning):
         get_wind_components(2, 400)
